@@ -16,14 +16,19 @@ describe Airport do
   #let(:plane) { Plane.new }
   subject { Airport.new }
   
+  it {is_expected.to respond_to :current_weather?}
+  it {is_expected.to respond_to :can_land?}
+  it {is_expected.to respond_to :can_take_off?}
+  it {is_expected.to respond_to :capacity}
+  
   describe 'take off' do
     before(:each) do
       allow(subject.planes.first).to receive(:flying?).and_return(false)
+      byebug
       allow(subject).to receive(:current_weather?).and_return(:sunny)
     end
 
     it 'instructs a plane to take off' do
-      byebug
       #subject.planes.first.land
       expect(subject.planes.first.take_off).to eq true
     end

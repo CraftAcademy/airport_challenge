@@ -1,4 +1,6 @@
 require 'plane'
+require 'airport'
+
 
 ## Note these are just some guidelines!
 ## Feel free to write more tests!!
@@ -17,29 +19,33 @@ require 'plane'
 
 describe Plane do
   subject { Plane.new }
+  let(:airport) { double(:airport, :can_take_off? => true, :can_land? => true) }
+  
   it 'is flying when created' do
-    expect(subject.is_flying?).to eq true
+    expect(subject.flying?).to eq true
   end
 
-  it 'can land' do
-    subject.land
-    expect(subject.flying?).to eq false
+  it 'can land if not landed' do
+    subject.land(airport)
+    allow(subject).to receive(:flying?).and_return(true)
+    expect(subject.land(airport)).to eq 'Landed'
   end
 
   it 'is landed after landing' do
-    subject.land
+    subject.land(airport)
     expect(subject.landed?).to eq true
   end
 
-  it 'can take off' do
-    subject.land
-    expect(subject.take_off).to eq true
+  it 'can take off if not flying' do
+    subject.land(airport)
+    allow(subject).to receive(:landed?).and_return(true)
+    expect(subject.take_off(airport)).to eq 'Took off'
   end
 
   it 'is flying after take off' do
     subject.flying = false
-    subject.take_off
-    expect(subject.flying).to eq true
+    subject.take_off(airport)
+    expect(subject.flying?).to eq true
   end
 
 end
