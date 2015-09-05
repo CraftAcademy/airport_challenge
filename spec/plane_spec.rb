@@ -16,15 +16,30 @@ require 'plane'
 # Are you testing that?
 
 describe Plane do
+  subject { Plane.new }
+  it 'is flying when created' do
+    expect(subject.is_flying?).to eq true
+  end
 
-  xit 'is flying when created'
+  it 'can land' do
+    subject.land
+    expect(subject.is_flying?).to eq false
+  end
 
-  xit 'can land'
+  it 'is landed after landing' do
+    subject.land
+    expect(subject.is_landed?).to eq true
+  end
 
-  xit 'is landed after landing'
+  it 'can take off' do
+    subject.land
+    expect(subject.take_off).to eq true
+  end
 
-  xit 'can take off'
-
-  xit 'is flying after take off'
+  it 'is flying after take off' do
+    subject.flying = false
+    subject.take_off
+    expect(subject.flying).to eq true
+  end
 
 end

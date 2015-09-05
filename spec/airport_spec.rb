@@ -13,11 +13,12 @@ require 'airport'
 
 describe Airport do
   let(:plane) { Plane.new }
-  let(:airport) { Airport.new }
+  subject { Airport.new }
   
   describe 'take off' do
     it 'instructs a plane to take off' do
-      expect(airport.planes.first.take_off).to eq true
+      byebug
+      expect(subject.planes.first.take_off).to eq true
     end
 
     xit 'releases a plane'
