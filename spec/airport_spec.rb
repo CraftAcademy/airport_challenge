@@ -23,20 +23,23 @@ describe Airport do
   
   describe 'take off' do
     before(:each) do
-      allow(subject.planes.first).to receive(:flying?).and_return(false)
-      byebug
-      allow(subject).to receive(:current_weather?).and_return(:sunny)
+      allow(subject.planes.first).to receive(:landed?).and_return(true)
+      allow(subject).to receive(:can_take_off?).and_return(true)
     end
 
     it 'instructs a plane to take off' do
-      #subject.planes.first.land
-      expect(subject.planes.first.take_off).to eq true
+      expect(subject.planes.first.take_off(subject)).to eq 'Took off'
     end
 
     xit 'releases a plane'
   end
 
-  describe 'landing' do
+  describe 'landing' do   
+    before(:each) do
+      allow(subject.planes.first).to receive(:flying?).and_return(true)
+      allow(subject).to receive(:can_land?).and_return(true)
+    end
+    
     xit 'instructs a plane to land'
 
     xit 'receives a plane'
@@ -63,10 +66,12 @@ describe Airport do
         allow(subject).to receive(:current_weather?).and_return(:stormy)
       end
       it 'does not allow a plane to take off' do
-        expect(subject.planes.first.take_off).to eq false
+        expect(subject.planes.first.take_off(subject)).to eq 'Not allowed to take off'
       end
 
-      xit 'does not allow a plane to land'
+      it 'does not allow a plane to land' do
+         expect(subject.planes.first.land(subject)).to eq 'Not allowed to land'
+      end
     end
   end
 end
