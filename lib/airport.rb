@@ -8,5 +8,7 @@ class Airport
     end
   end
   
-  
+  def current_weather?
+    rand(1..10) <= 7 ? :sunny : :stormy
+  end
 end

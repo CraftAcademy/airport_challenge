@@ -6,18 +6,18 @@ class Plane
   end
   
   def take_off
-    self.flying ? false : self.flying = true
+    self.landed? ? self.flying = true : false
   end
   
   def land
-    self.flying ? self.flying = false : false
+    self.flying? ? self.flying = false : false
   end
   
-  def is_flying?
+  def flying?
     self.flying
   end
   
-  def is_landed?
+  def landed?
     !self.flying
   end
 end

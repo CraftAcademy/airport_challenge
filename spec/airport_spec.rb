@@ -1,4 +1,5 @@
 require 'airport'
+require 'plane'
 
 ## Note these are just some guidelines!
 ## Feel free to write more tests!!
@@ -12,12 +13,18 @@ require 'airport'
 # If the airport is full then no planes can land
 
 describe Airport do
-  let(:plane) { Plane.new }
+  #let(:plane) { Plane.new }
   subject { Airport.new }
   
   describe 'take off' do
+    before(:each) do
+      allow(subject.planes.first).to receive(:flying?).and_return(false)
+      allow(subject).to receive(:current_weather?).and_return(:sunny)
+    end
+
     it 'instructs a plane to take off' do
       byebug
+      #subject.planes.first.land
       expect(subject.planes.first.take_off).to eq true
     end
 
@@ -45,7 +52,14 @@ describe Airport do
     # the plane can not land, and must not be in the airport
 
     context 'when weather conditions are stormy' do
-      xit 'does not allow a plane to take off'
+      
+      before(:each) do
+        allow(subject.planes.first).to receive(:flying?).and_return(false)
+        allow(subject).to receive(:current_weather?).and_return(:stormy)
+      end
+      it 'does not allow a plane to take off' do
+        expect(subject.planes.first.take_off).to eq false
+      end
 
       xit 'does not allow a plane to land'
     end
