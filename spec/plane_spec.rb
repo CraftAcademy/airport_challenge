@@ -23,12 +23,12 @@ describe Plane do
 
   it 'can land' do
     subject.land
-    expect(subject.is_flying?).to eq false
+    expect(subject.flying?).to eq false
   end
 
   it 'is landed after landing' do
     subject.land
-    expect(subject.is_landed?).to eq true
+    expect(subject.landed?).to eq true
   end
 
   it 'can take off' do
