@@ -48,10 +48,23 @@ describe Airport do
     context 'when airport is full' do
       before(:each) do
         allow(subject).to receive(:full?).and_return(true)
+        allow(subject).to receive(:current_weather?).and_return(:sunny)
       end
       
       it 'does not allow a plane to land' do 
         expect(plane.land(subject)).to eq 'Not allowed to land'
+      end
+    end
+    
+    context 'when airport is not full' do
+      before(:each) do
+        allow(plane).to receive(:flying?).and_return(true)
+        allow(subject).to receive(:full?).and_return(false)
+        allow(subject).to receive(:current_weather?).and_return(:sunny)
+      end
+      
+      it 'allows a plane to land' do 
+        expect(plane.land(subject)).to eq 'Landed'
       end
     end
 
