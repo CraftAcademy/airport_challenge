@@ -48,7 +48,7 @@ Style/BarePercentLiterals:
   Enabled: true
 
 Style/BlockComments:
-  Description: 'Do not use block comments.'
+  Description: 'do NOT use block comments.'
   StyleGuide: 'https://github.com/bbatsov/ruby-style-guide#no-block-comments'
   Enabled: true
 
@@ -111,7 +111,7 @@ Style/ClosingParenthesisIndentation:
   Enabled: true
 
 Style/ColonMethodCall:
-  Description: 'Do not use :: for method call.'
+  Description: 'do NOT use :: for method call.'
   StyleGuide: 'https://github.com/bbatsov/ruby-style-guide#double-colons'
   Enabled: true
 
@@ -196,7 +196,7 @@ Style/FormatString:
   Enabled: true
 
 Style/GlobalVars:
-  Description: 'Do not introduce global variables.'
+  Description: 'do NOT introduce global variables.'
   StyleGuide: 'https://github.com/bbatsov/ruby-style-guide#instance-vars'
   Reference: 'http://www.zenspider.com/Languages/Ruby/QuickRef.html'
   Enabled: true
@@ -221,7 +221,7 @@ Style/IfUnlessModifier:
   Enabled: true
 
 Style/IfWithSemicolon:
-  Description: 'Do not use if x; .... Use the ternary operator instead.'
+  Description: 'do NOT use if x; .... Use the ternary operator instead.'
   StyleGuide: 'https://github.com/bbatsov/ruby-style-guide#no-semicolon-ifs'
   Enabled: true
 
@@ -248,7 +248,7 @@ Style/LineEndConcatenation:
   Enabled: true
 
 Style/MethodCallParentheses:
-  Description: 'Do not use parentheses for method calls with no arguments.'
+  Description: 'do NOT use parentheses for method calls with no arguments.'
   StyleGuide: 'https://github.com/bbatsov/ruby-style-guide#no-args-no-parens'
   Enabled: true
 
@@ -274,7 +274,7 @@ Style/MultilineBlockLayout:
   Enabled: true
 
 Style/MultilineIfThen:
-  Description: 'Do not use then for multi-line if/unless.'
+  Description: 'do NOT use then for multi-line if/unless.'
   StyleGuide: 'https://github.com/bbatsov/ruby-style-guide#no-then'
   Enabled: true
 
@@ -343,7 +343,7 @@ Style/NumericLiterals:
 
 Style/OptionalArguments:
   Description: >-
-                 Checks for optional arguments that do not appear at the end
+                 Checks for optional arguments that do NOT appear at the end
                  of the argument list
   StyleGuide: 'https://github.com/bbatsov/ruby-style-guide#optional-arguments'
   Enabled: true
@@ -480,7 +480,7 @@ Style/VariableName:
 
   Style/UnlessElse:
   Description: >-
-                 Do not use unless with else. Rewrite these with the positive
+                 do NOT use unless with else. Rewrite these with the positive
                  case first.
   StyleGuide: 'https://github.com/bbatsov/ruby-style-guide#no-else-with-unless'
   Enabled: true
@@ -516,7 +516,7 @@ Style/WhileUntilDo:
   Description: 'Checks for redundant do after while or until.'
   StyleGuide: 'https://github.com/bbatsov/ruby-style-guide#no-multiline-while-do'
   Enabled: true
-# enable for later challenge 
+# enable for later challenge
 
   # Align ends correctly.
 Lint/EndAlignment:
