@@ -21,7 +21,7 @@ class Airport
   def can_land?
     current_weather? == :sunny && !self.full?
   end
-  alias :can_take_off? :can_land?
+  alias_method :can_take_off? :can_land?
   
   def current_weather?
     rand(1..10) <= 7 ? :sunny : :stormy
