@@ -1,4 +1,5 @@
 require 'plane'
+require 'airport'
 
 ## Note these are just some guidelines!
 ## Feel free to write more tests!!
@@ -16,15 +17,40 @@ require 'plane'
 # Are you testing that?
 
 describe Plane do
+  let(:plane) {Plane.new}
+  let(:airport) {Airport.new}
+ 	end
 
-  xit 'is flying when created'
+  it 'is flying when created' do
+  	expect(plane.state).to eq 'Flying'
+  end
 
-  xit 'can land'
+  it 'is landed after landing' do
+  	expect(plane.state).to eq 'Landed'
+  end
 
-  xit 'is landed after landing'
+  it 'can take off if landed' do
+  	allow(airport.can_land).to receive(:false) {true}
+  	airport.land_plane(plane)
 
-  xit 'can take off'
+  	allow(airport.can_take_off).to receive(:false) {true}
+  	expect(airport.can_take_off). to eq true
+  end
 
-  xit 'is flying after take off'
+  it 'is flying after take off' do
+  	allow(airport.can_land).to receive(:false) {true}
+  	airport.land_plane(plane)
+  	allow(airport.can_take_off).to receive(:false) {true}
+  	airport.take_off_plane(plane)
+  	expect(plane.flying).to eq 'Flying'
+	end
 
-end
+  	it 'can land' do
+  	expect(can.land).to eq 'Allowed to land'
+  
+
+  end
+ 
+
+
+
