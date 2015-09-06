@@ -1,5 +1,5 @@
 class Airport
-  attr_accessor :planes, :capacity
+  attr_accessor :planes
   
   MAX_CAPACITY = 12
   
