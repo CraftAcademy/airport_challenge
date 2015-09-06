@@ -45,6 +45,17 @@ describe Airport do
   end
 
   describe 'traffic control' do
+    
+    it '#full? returns false if not full' do 
+      allow(subject.planes).to receive(:count).and_return(2)
+      expect(subject.full?).to eq false
+    end
+    
+    it '#full? returns true if full' do 
+      allow(subject.planes).to receive(:count).and_return(Airport::MAX_CAPACITY)
+      expect(subject.full?).to eq true
+    end
+    
     context 'when airport is full' do
       before(:each) do
         allow(subject).to receive(:full?).and_return(true)
