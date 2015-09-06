@@ -1,2 +1,16 @@
 class Plane
+  attr_accessor :status
+
+  def initialize
+    @status = 'Flying'
+  end
+
+  def flying
+    @status = 'Flying'
+  end
+
+  def landed
+    @status = 'Landed'
+  end
+
 end
