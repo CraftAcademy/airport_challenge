@@ -1,26 +1,25 @@
 class Plane
 
-	attr_accessor :flying
+	attr_accessor :state
+
 
 	def initialize
-		self.flying = true
+		@state = 'Flying'
 	end
 
-	def take_off
-		self.flying ? false : self.flying = true
+	def landed 
+		@state = 'Landed'
 	end
 
-	def land
-		self.flying ? self.flying = false :false
+	def flying
+		@state = 'Flying'
 	end
 
-	def flying?
-		self.flying
+	def can_take_off
+		@state = 'Took-off'
 	end
 
-	def landed?
-		self.flying = true
+	def can_land
+		@state = 'Allowed to land'
 	end
-
-
 end
