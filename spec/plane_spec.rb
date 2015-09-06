@@ -27,4 +27,27 @@ describe Plane do
 
   xit 'is flying after take off'
 
+  subject { Plane.new }
+  it 'is flying when created' do
+  	expect(subject.flying?).to eq true
+  end
+
+  it 'can land' do
+  	subject.land 
+  	expect(subject.landed?).to eq true
+  end
+
+  it 'can take off' do
+  	subject.land
+  	expect(subject.take_off). to eq true
+  end
+
+  it 'is flying after take off' do
+  	subject.flying = false
+  	subject.take_off
+  	expect(subject.flying).to eq true
+
+  end
+
+
 end
