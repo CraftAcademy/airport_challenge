@@ -21,8 +21,13 @@ describe Plane do
   subject { Plane.new }
   let(:airport) { double(:airport, :can_take_off? => true, :can_land? => true) }
   
-  it 'is flying when created' do
-    expect(subject.flying?).to eq true
+  before(:each) do
+    allow(airport).to receive(:release_plane) 
+    allow(airport).to receive(:receive_plane)
+  end
+  
+  it 'is landed when created' do
+    expect(subject.flying?).to eq false
   end
 
   it 'can land if not landed' do

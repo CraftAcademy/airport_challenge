@@ -4,12 +4,13 @@ class Plane
   attr_accessor :flying
   
   def initialize
-    self.flying = true
+    self.flying = false
   end
   
   def take_off(airport)
     if airport.can_take_off? && self.landed? 
       self.flying = true 
+      airport.release_plane(self)
       'Took off'
     else
       'Not allowed to take off'
@@ -19,6 +20,7 @@ class Plane
   def land(airport)
     if airport.can_land? && self.flying?
       self.flying = false
+      airport.receive_plane(self)
       'Landed'
     else
       'Not allowed to land'
