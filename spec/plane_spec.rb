@@ -12,7 +12,11 @@ require 'plane'
 
 describe Plane do
 
-  xit 'is flying when created'
+  let(:plane) { Plane.new }
+
+  it "is flying when it is created" do
+    expect(plane.is_flying?).to eq(true)
+  end
 
   xit 'can land'
 
