@@ -12,6 +12,8 @@ require 'airport'
 # If the airport is full then no planes can land
 
 describe Airport do
+let(:plane) { Plane.new }
+let(:airport) { Airport.new }
 
   describe 'take off' do
     xit 'instructs a plane to take off'

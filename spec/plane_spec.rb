@@ -17,14 +17,23 @@ require 'plane'
 
 describe Plane do
 
-  xit 'is flying when created'
+  subject { Plane.new }
 
-  xit 'can land'
+  it 'is flying when created' do
+    expect(subject.flying?).to eq true    
+  end
+
+  it 'can land' do
+    subject.land
+    expect(subject.flying?).to eq false
+  end
 
   xit 'is landed after landing'
 
   xit 'can take off'
 
   xit 'is flying after take off'
+
+
 
 end
