@@ -93,5 +93,16 @@ describe Airport do
          expect(plane.land(subject)).to eq 'Not allowed to land'
       end
     end
+    
+    it '#current_weather? returns :sunny or :stormy' do
+      weather = []
+      100.times do
+        weather << subject.current_weather?
+      end
+      expect(weather).to include :sunny 
+      expect(weather).to include :stormy
+      
+    end
   end
+  
 end
