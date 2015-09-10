@@ -1,4 +1,5 @@
 require 'airport'
+require 'plane'
 
 ## Note these are just some guidelines!
 ## Feel free to write more tests!!
@@ -16,7 +17,7 @@ let(:plane) { Plane.new }
 let(:airport) { Airport.new }
 
   describe 'take off' do
-    xit 'instructs a plane to take off'
+    it 'instructs a plane to take off'
 
     xit 'releases a plane'
   end
@@ -42,7 +43,11 @@ let(:airport) { Airport.new }
     # the plane can not land, and must not be in the airport
 
     context 'when weather conditions are stormy' do
-      xit 'does not allow a plane to take off'
+      it 'does not allow a plane to take off' do
+        allow(subject).to receive(:weather).and_return 'Stormy'
+        expect(subject.can_land(plane)).to eq false
+      end 
+
 
       xit 'does not allow a plane to land'
     end
