@@ -18,34 +18,33 @@ require 'airport'
 
 describe Plane do
 
-let(:plane) { Plane.new }
+subject {Plane.new}
 let(:airport) { Airport.new }
 
+  before(:each) do
+      allow(airport).to receive(:can_land).and_return true
+      allow(airport).to receive(:can_take_off).and_return true
+    end
+
   it 'is flying when created' do
-    expect(plane.status).to eq 'Flying'
+    expect(subject.status).to eq 'Flying'
   end
 
   it 'can land' do
-    expect(plane.landed).to eq 'Landed'
+    expect(subject.landed).to eq 'Landed'
   end
 
   it 'is landed after landing' do
-    airport.land_plane(plane)
-    expect(plane.landed).to eq 'Landed'
+    airport.land_plane(subject)
+    expect(subject.status).to eq 'Landed'
   end
 
   it 'can take off' do
-    allow(airport.can_land).to receive(:false) {true}
-    airport.land_plane(plane)
-    allow(airport.can_take_off).to receive(:false) {true}
-    expect(airport.can_take_off).to eq true
-  end
+    expect(airport.take_off_plane(subject)).to eq 'Took off!'
+    end
 
   it 'is flying after take off' do
-    allow(airport.can_land).to receive(:false) {true}
-    airport.land_plane(plane)
-    allow(airport.can_take_off).to receive(:false) {true}
-    airport.take_off_plane(plane)
-    expect(plane.flying).to eq 'Flying'
+    airport.take_off_plane(subject)
+    expect(subject.flying).to eq 'Flying'
   end
 end

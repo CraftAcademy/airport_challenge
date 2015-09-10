@@ -1,4 +1,4 @@
-class Airport
+  class Airport
   attr_accessor :landed_planes
 
   MAX_CAPACITY = 2
@@ -21,7 +21,7 @@ class Airport
   end
 
   def take_off_plane(plane)
-    if can_take_off == true
+    if can_take_off(plane) == true
       release_plane(plane)
       'Took off!'
     else
@@ -34,16 +34,16 @@ class Airport
     plane.flying
   end
 
-  def can_land
-    weather == 'Sunny' && !airport_full?
+  def can_land(plane)
+    weather == 'Sunny' && !airport_full? && plane.status == "Flying"
   end
 
-  def can_take_off
-    weather == 'Sunny'
+  def can_take_off(plane)
+    weather == "Sunny" && plane.status == "Landed"
   end
 
   def land_plane(plane)
-    if can_land == true
+    if can_land(plane) == true
       receive_plane(plane)
       'Landed'
     else
