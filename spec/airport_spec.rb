@@ -14,7 +14,7 @@ require 'airport'
 describe Airport do
 
   describe 'take off' do
-    xit 'instructs a plane to take off'
+    it 'instructs a plane to take off'
 
     xit 'releases a plane'
   end

@@ -1,4 +1,6 @@
-require 'plane'
+require 'plane.rb'
+
+
 
 ## Note these are just some guidelines!
 ## Feel free to write more tests!!
@@ -14,17 +16,31 @@ require 'plane'
 # Think about your implementation - does it allow a plane to be "flying"
 # and landed?
 # Are you testing that?
-
+require 'plane.rb'
 describe Plane do
 
-  xit 'is flying when created'
 
-  xit 'can land'
+it 'is flying when created' do
+  plane1=Plane.new
+  expect(plane1.flying?).to eq true
 
-  xit 'is landed after landing'
+end
 
-  xit 'can take off'
+it 'can land' do
+   plane1=Plane.new
+   plane1.land
+   expect(plane1.flying?).to eq false
+end
 
-  xit 'is flying after take off'
+  it 'is landed after landing' do
+    plane1=Plane.new
+    plane1.land
+    expect(plane1.landed?).to eq true
+
+  end
+
+#  xit 'can take off'
+
+#  xit 'is flying after take off'
 
 end
