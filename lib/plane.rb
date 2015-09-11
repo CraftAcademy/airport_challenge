@@ -10,9 +10,11 @@ class Plane
     end
 
   end
+
   def land
     @flying = false
   end
+
   def landed?
     if @flying == false
       true
@@ -20,6 +22,10 @@ class Plane
       false
     end
 
+  end
+
+  def take_off
+    @flying == true
   end
 
 end

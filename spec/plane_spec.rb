@@ -25,7 +25,7 @@ it 'is flying when created' do
   expect(plane1.flying?).to eq true
 
 end
-
+# Planet skall landa, alltså inte flyga längre
 it 'can land' do
    plane1=Plane.new
    plane1.land
@@ -38,8 +38,11 @@ end
     expect(plane1.landed?).to eq true
 
   end
-
-#  xit 'can take off'
+  # Planet skall lyfta alltså skall jag göra en method som heter take off
+  it 'plane do take off' do
+    plane1=Plane.new
+    expect(plane1.take_off).to eq true
+  end
 
 #  xit 'is flying after take off'
 
