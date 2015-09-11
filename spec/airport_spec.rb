@@ -12,9 +12,15 @@ require 'airport'
 # If the airport is full then no planes can land
 
 describe Airport do
+  
+  subject { Airport.new }
 
   describe 'take off' do
-    xit 'instructs a plane to take off'
+    it 'instructs a plane to take off' do
+      plane = Plane.new
+      expect(plane.take_off(subject)).to eq true 
+    end
+    
 
     xit 'releases a plane'
   end
@@ -46,3 +52,7 @@ describe Airport do
     end
   end
 end
+
+
+
+
