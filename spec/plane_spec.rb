@@ -37,7 +37,7 @@ let(:airport) { Airport.new }
 
   it 'is landed after landing' do
     airport.land(subject)
-      expect(subject.flying).to eq false
+    expect(subject.flying).to eq false
   end
 
   it 'can take off' do
@@ -46,6 +46,6 @@ let(:airport) { Airport.new }
 
   it 'is flying after take off' do
     airport.take_off(subject)
-      expect(subject.flying).to eq true
+    expect(subject.flying).to eq true
   end
 end

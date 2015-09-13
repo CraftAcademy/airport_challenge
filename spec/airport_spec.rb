@@ -57,7 +57,6 @@ describe Airport do
 
   describe 'traffic control' do
 
-
     context 'when airport is full' do
       it 'does not allow a plane to land' do
         allow(subject).to receive(:airport_full?).and_return true
