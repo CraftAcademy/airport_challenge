@@ -14,8 +14,8 @@ require 'plane'
 
 describe Airport do
 
-subject {Airport.new}
-let(:plane) { Plane.new }
+  subject {Airport.new}
+  let(:plane) { Plane.new }
 
   describe 'take off' do
 
@@ -28,12 +28,12 @@ let(:plane) { Plane.new }
     end
 
     it 'instructs a plane to take off' do
-      expect(subject.take_off_plane(plane)).to eq 'Took off!'
+      expect(subject.take_off(plane)).to eq 'Took off!'
     end
 
     it 'releases a plane' do
-      subject.land_plane(plane)
-      subject.take_off_plane(plane)
+      subject.land(plane)
+      subject.take_off(plane)
       expect(subject.landed_planes).to eq []
     end
   end
@@ -45,22 +45,23 @@ let(:plane) { Plane.new }
     end
 
     it 'instructs a plane to land' do
-      subject.land_plane(plane)
-      expect(plane.status).to eq 'Landed'
+      subject.land(plane)
+      expect(plane.flying).to eq false
     end
 
     it 'receives a plane' do
-      subject.land_plane(plane)
+      subject.land(plane)
       expect(subject.landed_planes).to include (plane)
     end
   end
 
   describe 'traffic control' do
 
+
     context 'when airport is full' do
       it 'does not allow a plane to land' do
         allow(subject).to receive(:airport_full?).and_return true
-        expect(subject.land_plane(plane)).to eq 'Cant land right now'
+        expect(subject.land(plane)).to eq 'Cant land right now'
       end
     end
 
@@ -75,12 +76,12 @@ let(:plane) { Plane.new }
 
     context 'when weather conditions are stormy' do
       it 'does not allow a plane to take off' do
-        allow(subject).to receive(:weather).and_return 'Stormy'
+        allow(subject).to receive(:sunny?).and_return false
         expect(subject.can_take_off(plane)).to eq false
       end
 
       it 'does not allow a plane to land' do
-        allow(subject).to receive(:weather).and_return 'Stormy'
+        allow(subject).to receive(:sunny?).and_return false
         expect(subject.can_land(plane)).to eq false
       end
     end

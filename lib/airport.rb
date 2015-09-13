@@ -1,49 +1,49 @@
-  class Airport
-  attr_accessor :landed_planes
+require './lib/airport.rb'
 
-  MAX_CAPACITY = 2
+class Airport
+  attr_accessor :landed_planes
+  attr_accessor :capacity
+
+  #MAX_CAPACITY = 2
 
   def initialize
     @landed_planes = []
+    @capacity = 3
   end
 
   def airport_full?
-    self.landed_planes.count >= MAX_CAPACITY
+    self.landed_planes.count >= capacity
   end
 
-  def weather
-    wn = rand(6)
-      if wn < 4
-        'Sunny'
-      else
-        'Stormy'
-      end
+  def sunny?
+    rand(10)<7
   end
 
-  def take_off_plane(plane)
-    if can_take_off(plane) == true
-      release_plane(plane)
+  def take_off(plane)
+    if can_take_off(plane)
+      release(plane)
       'Took off!'
     else
-      'Cant take off right now!'
+      puts 'Cant take off right now!'
     end
   end
 
-  def release_plane(plane)
+  def release(plane)
     self.landed_planes.delete plane
-    plane.flying
+    @capacity +=1
+    plane.flying = true
   end
 
   def can_land(plane)
-    weather == 'Sunny' && !airport_full? && plane.status == "Flying"
+    sunny? == true && !airport_full? && plane.flying == true
   end
 
   def can_take_off(plane)
-    weather == "Sunny" && plane.status == "Landed"
+    sunny? == true && plane.flying == false
   end
 
-  def land_plane(plane)
-    if can_land(plane) == true
+  def land(plane)
+    if can_land(plane)
       receive_plane(plane)
       'Landed'
     else
@@ -53,7 +53,7 @@
 
   def receive_plane(plane)
     @landed_planes << plane
-    plane.landed
+    @capacity -=1
+    plane.flying = false
   end
-
 end

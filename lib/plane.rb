@@ -1,16 +1,18 @@
+require './lib/airport.rb'
+
 class Plane
-  attr_accessor :status
+  attr_accessor :flying
 
   def initialize
-    @status = "Flying"
+    self.flying = true
   end
 
-  def flying
-    @status = "Flying"
-  end
+  # def fly
+  #   self.flying == true
+  # end
 
-  def landed
-    @status = "Landed"
-  end
+  # def landed
+  #   self.flying == false
+  # end
 
 end
