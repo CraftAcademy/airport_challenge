@@ -1,4 +1,6 @@
 require 'airport'
+require 'Plane'
+require 'Air_traffic_controller.rb'
 
 ## Note these are just some guidelines!
 ## Feel free to write more tests!!
@@ -14,20 +16,35 @@ require 'airport'
 describe Airport do
 
   describe 'take off' do
-    it 'instructs a plane to take off'
+    it 'instructs a plane to take off' do
 
-    xit 'releases a plane'
+      controller=Controller.new
+      expect(controller.allowed).to eq true
+
+
+    end
+
+    it 'releases a plane' do
+
+    end
   end
 
   describe 'landing' do
-    xit 'instructs a plane to land'
+    it 'instructs a plane to land' do
 
-    xit 'receives a plane'
+    end
+
+    it 'receives a plane' do
+
+    end
   end
 
   describe 'traffic control' do
-    context 'when airport is full' do
-      xit 'does not allow a plane to land'
+    context 'is airport full?' do
+      it 'allow planes to land if it is not full'do
+
+
+      end
     end
 
     # Include a weather condition.
@@ -40,9 +57,13 @@ describe Airport do
     # the plane can not land, and must not be in the airport
 
     context 'when weather conditions are stormy' do
-      xit 'does not allow a plane to take off'
+      it 'does not allow a plane to take off' do
 
-      xit 'does not allow a plane to land'
+      end
+
+      it 'does not allow a plane to land' do
+
+      end
     end
   end
 end
