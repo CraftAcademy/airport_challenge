@@ -44,6 +44,9 @@ end
     expect(plane1.take_off).to eq true
   end
 
-#  xit 'is flying after take off'
+  it 'is flying after take off'  do
+    plane1=Plane.new
+    expect(plane1.flying?).to eq true
+  end
 
 end
