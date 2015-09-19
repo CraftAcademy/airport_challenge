@@ -3,10 +3,10 @@ class Airport
   
   MAX_CAPACITY = 12
   
-  def initialize
+  def initialize(plane_class)
     @planes = []
     3.times do
-      self.planes << Plane.new
+      self.planes << plane_class.new
     end
   end
   

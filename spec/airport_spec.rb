@@ -2,7 +2,7 @@ require 'airport'
 require 'plane'
 
 describe Airport do
-  subject { Airport.new }
+  subject { Airport.new Plane}
   let(:plane) { subject.planes.first }
   
   it {is_expected.to respond_to :current_weather?}
@@ -48,12 +48,12 @@ describe Airport do
     
     it '#full? returns false if not full' do 
       allow(subject.planes).to receive(:count).and_return(2)
-      expect(subject.full?).to eq false
+      expect(subject).to_not be_full
     end
     
     it '#full? returns true if full' do 
       allow(subject.planes).to receive(:count).and_return(Airport::MAX_CAPACITY)
-      expect(subject.full?).to eq true
+      expect(subject).to be_full
     end
     
     context 'when airport is full' do
@@ -63,7 +63,7 @@ describe Airport do
       end
       
       it 'does not allow a plane to land' do 
-        expect(plane.land(subject)).to eq 'Not allowed to land'
+        expect{plane.land(subject)}.to raise_error 'Not allowed to land'
       end
     end
     
@@ -86,11 +86,11 @@ describe Airport do
         allow(subject).to receive(:current_weather?).and_return(:stormy)
       end
       it 'does not allow a plane to take off' do
-        expect(plane.take_off(subject)).to eq 'Not allowed to take off'
+        expect{plane.take_off(subject)}.to raise_error 'Not allowed to take off'
       end
 
       it 'does not allow a plane to land' do
-         expect(plane.land(subject)).to eq 'Not allowed to land'
+         expect{plane.land(subject)}.to raise_error 'Not allowed to land'
       end
     end
     

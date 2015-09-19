@@ -13,7 +13,7 @@ class Plane
       airport.release_plane(self)
       'Took off'
     else
-      'Not allowed to take off'
+      raise 'Not allowed to take off'
     end
   end
   
@@ -23,7 +23,7 @@ class Plane
       airport.receive_plane(self)
       'Landed'
     else
-      'Not allowed to land'
+      raise 'Not allowed to land'
     end
   end
   
