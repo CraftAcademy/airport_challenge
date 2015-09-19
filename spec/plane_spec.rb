@@ -1,30 +1,43 @@
-require 'plane'
-
-## Note these are just some guidelines!
-## Feel free to write more tests!!
-
-# When we create a new plane, it should be "flying",
-# thus planes can not be created in the airport.
-#
-# When we land a plane at the airport, the plane in question should
-# be "landed"
-#
-# When the plane takes of from the airport, it should be "flying" again
-#
-# Think about your implementation - does it allow a plane to be "flying"
-# and landed?
-# Are you testing that?
+require './lib/plane.rb'
+require 'airport'
 
 describe Plane do
+  subject { Plane.new }
+  let(:airport) { double(:airport, :can_take_off? => true, :can_land? => true) }
+  
+  before(:each) do
+    allow(airport).to receive(:release_plane) 
+    allow(airport).to receive(:receive_plane)
+  end
+  
+  it 'is landed when created' do
+    expect(subject.flying?).to eq false
+  end
 
-  xit 'is flying when created'
+  it 'can land if not landed' do    
+    allow(subject).to receive(:can_land?).and_return(true)
+    allow(subject).to receive(:flying?).and_return(true)
+    expect{subject.land(airport)}.not_to raise_error 
+  end
 
-  xit 'can land'
+  it 'is landed after landing' do
+    allow(subject).to receive(:can_land?).and_return(true)
+    allow(subject).to receive(:flying?).and_return(true)
+    subject.land(airport)
+    expect(subject).to be_landed
+  end
 
-  xit 'is landed after landing'
+  it 'can take off if not flying' do
+    allow(subject).to receive(:landed?).and_return(true)
+    allow(subject).to receive(:can_take_off?).and_return(true)
+    expect(subject.take_off(airport)).to eq 'Took off'
+  end
 
-  xit 'can take off'
-
-  xit 'is flying after take off'
+  it 'is flying after take off' do
+    subject.flying = false
+    subject.take_off(airport)
+    expect(subject).to be_flying
+    expect(subject).to_not be_landed
+  end
 
 end
