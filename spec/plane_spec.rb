@@ -19,7 +19,7 @@ describe Plane do
 
   subject { Plane.new }
 
-   it 'is flying when created' do
+  it 'is flying when created' do
     expect(subject.flying).to eq true    
   end
 

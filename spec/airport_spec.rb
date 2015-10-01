@@ -1,17 +1,6 @@
 require 'airport'
 require 'plane'
 
-## Note these are just some guidelines!
-## Feel free to write more tests!!
-
-# A plane currently in the airport can be requested to take off.
-#
-# No more planes can be added to the airport, if it's full.
-# It is up to you how many planes can land in the airport
-# and how that is implemented.
-#
-# If the airport is full then no planes can land
-
 describe Airport do
   subject { Airport.new }
   let(:plane) { Plane.new }
@@ -19,17 +8,16 @@ describe Airport do
   describe 'take off' do
 
     before(:each) do
-      allow(subject).to receive(:take_off).and_return true
+      allow(subject).to receive(:take_off).return true
     end 
 
     it 'instructs a plane to take off' do
-      expect(subject.take_off(plane)).to eq "Took off!"
+      expect(subject.take_off(plane)).to eq 
     end 
 
     xit 'releases a plane' do
-      subject.land(plane)
-      subject.take_off(plane)
-      expect(subject.docked_planes).to eq []
+      subject.release_a_plane
+
     end
   end 
 
