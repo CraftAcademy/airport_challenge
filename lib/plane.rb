@@ -1,32 +1,30 @@
 class Plane
 
-	attr_accessor :flying
+	DEFAULT_STATUS = "flying"
+
+	attr_accessor :status
 
 	def initialize
-		self.flying = true
+		self.status = DEFAULT_STATUS
 	end
-
-	def flying?
-		self.flying == true
-	end 
 
 	def land
-		if self.flying == false
-			'You have already landed, sir'
-		else 
-			self.flying = false
-		end 
-	end 
-
-	def landed? 
-		self.flying == false
+		self.status = "landed"
 	end
 
-	def take_off
-		if self.flying == true
-			'You are already flying, sir'
-		else 
-			self.flying = true
+	def landed? 
+ 		if self.status == "landed"
+ 			true
+ 		end
+ 	end
+
+ 	def take_off
+ 		self.status = "flying"
+ 	end
+
+	def took_off?
+		if self.status == "flying"
+			true
 		end 
 	end 
 end

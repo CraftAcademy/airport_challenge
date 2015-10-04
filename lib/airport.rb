@@ -1,25 +1,16 @@
 class Airport
 
-	attr_accessor :docked_plane
+	attr_accessor :stationed_planes
   attr_accessor :capacity
 
-  max_capacity = 4
+  MAX_CAPACITY = 4
 
 	def initialize
-    self.docked_plane = []
-    self.max_capacity = 4
+    self.stationed_planes = []
+    self.capacity = MAX_CAPACITY
 	end
 
-  def take_off(plane)
-    if take_off(plane)
-      release(plane)
-      "Took off!"
-    else
-      puts 'You cant take off right now!'
-    end
-  end
+  def take_off
 
-  # def release(plane)
-  #   if self.docked_plane = []
-  # end
+  end
 end
