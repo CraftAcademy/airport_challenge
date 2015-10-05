@@ -1,34 +1,34 @@
 require 'airport'
-
-## Note these are just some guidelines!
-## Feel free to write more tests!!
-
-# A plane currently in the airport can be requested to take off.
-#
-# No more planes can be added to the airport, if it's full.
-# It is up to you how many planes can land in the airport
-# and how that is implemented.
-#
-# If the airport is full then no planes can land
+require 'plane'
 
 describe Airport do
   
   subject { Airport.new }
+  subject { Plane.new }
+
+   it "has a default capacity" do
+    expect(airport.capacity).to eq 10
+  end
 
   describe 'take off' do
-    it 'instructs a plane to take off' do
-      plane = Plane.new
-      expect(plane.take_off(subject)).to eq true 
+
+    it 'send plane to take off' do
+      allow(airport_with_plane).to receive(:stormy?).and_return(false)
+      expect(plane).to receive(:take_off!)
+      airport_with_plane.take_off(plane)
     end
     
+    it 'releases a plane'
 
-    xit 'releases a plane'
   end
 
   describe 'landing' do
-    xit 'instructs a plane to land'
 
-    xit 'receives a plane'
+    it 'can land a plane to land'
+        
+    allow(airport).to receive(:stormy?).and_return(false)
+    expect(plane).to receive(:land!).and_return(plane)
+    airport.land(plane)
   end
 
   describe 'traffic control' do
