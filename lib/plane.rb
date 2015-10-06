@@ -1,15 +1,28 @@
 class Plane
-	attr_accessor :flying
+  attr_accessor :flying
 
-	def initialize
-		@flying = true
-	end
+  def initialize
+    @flying = true
+  end
 
-	def flying?
-	 if @flying == true 
-	 	true
-	 else
-	 	false
-	 end
-	end
+  def flying?
+    if @flying == true
+      true
+    else
+      false
+    end
+
+    def take_off
+      @flying = true
+    end
+
+    def status
+      @flying ? "flying" : "landed"
+    end
+
+    def air
+      air = 'In the air flying'
+    end
+  end
 end
+

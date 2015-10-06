@@ -12,9 +12,6 @@ Create some planes:
   > 4 = Plane.new
 Land a plane:
 
-  > airport.land(2)
-If the weather is stormy, you may need to try landing the plane a few times.
-
 Send a plane for take off:
 
   > airport.take_off(3)

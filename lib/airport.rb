@@ -1,55 +1,51 @@
 class Airport
 
-	include Weather
+  MAXIMUM_CAPACITY = 10
 
-	DEFAULT_CAPACITY = 10
+  attr_accessor :planes, :capacity,
 
-	attr_accessor :planes, :capacity
+  def initialize
+    @capacity = (:capacity)
+    @planes = []
+  end
 
-	def initialize
-		@capacity = (:capacity)
-		@planes = (:planes)
-	end
 
-	def capacity
+  def capacity
+    @capacity = MAXIMUM_CAPACITY
+  end
 
-		@capacity = DEFAULT_CAPACITY
-	end
+  def planes
+    @planes = 4
+  end
 
-	def planes
-		@planes = 4
-	end
+  def land(planes)
+    receive "landing prohibited in a storm!" if stormy?
+    receive "Airport is full" if full?
+    receive "plane has landed" if has_landed
+    receive "ready to take_off?" if clear_skies
+  end
 
-	def land(planes)
+  def take_off(planes)
+    say "take off not aloud in storm" if stormy?
+  end
 
-		say "landing prohibited in a storm!" if stormy?
-		say "Airport is full" if full?
-		say "plane has landed" if has_landed
-		say "ready to take_off?" if clear_skies
-	end
+  def full
+    planes.count == @planes
+  end
 
-	def take_off(planes)
+  def has_landed(planes)
+    plane.include? (planes)
+  end
 
-		say "take off not aloud in storm" if stormy?
-	end
+  def clear_skies
+    condition = :sunny
+  end
 
-	def full
+  def stormy
+    condition = :stormy
+  end
 
-		planes.count == @planes
-	end
-
-	def has_landed(planes)
-		plane.include? (planes)
-	end
-
-	def clear_skies
-		condition = :sunny
-	end
-
-	def stormy
-		condition = :storm
-
-	def airport_full?
-		landed_planes.count == capacity
-	end
+  def airport_full?
+    landed_planes.count == MAXIMUM_CAPACITY
+  end
 end
