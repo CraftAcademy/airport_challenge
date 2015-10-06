@@ -6,51 +6,48 @@ describe Airport do
   subject { Airport.new }
   let(:plane) { Plane.new }
 
-  describe 'take off' do
+  describe 'Airport can instruct take off' do
 
     before(:each) do
       allow(plane).to receive("land")
+      subject.landing(plane)
       allow(plane).to receive("take_off")
     end
 
     it 'airport instructs a plane to take off' do
-     
-    end 
-
-    xit 'releases a plane' do
-
+      expect(subject).to respond_to(:take_off)
     end
-  end 
 
-  # describe 'landing' do
+    it 'releases a plane' do
+      expect(subject.take_off).to eq(plane)
+    end
+  end
 
-  #   xit 'instructs a plane to land' do
+  describe 'Airport can instruct a landing' do
 
-  #   end 
+    before(:each) do
+      allow(plane).to receive(:land)
+    end
 
-  #   xit 'receives a plane' do
+    it 'airport instruct a plane to land' do
+      expect(subject).to respond_to(:landing)
+    end
 
-  #   end 
-  # end
+    it 'airport receives a plane' do
+      expect(subject.landing plane).to eq(plane)
+    end
+  end
 
-  # describe 'traffic control' do
+  describe 'Airport Traffic controller' do
+    context 'when airport is full' do
+      before(:each) do
+        allow(plane).to receive('land')
+      end
 
-  #   context 'when airport is full' do
-
-  #     xit 'does not allow a plane to land' do
-
-  #     end 
-  #   end
-
-  #   context 'when weather conditions are stormy' do
-  #     xit 'does not allow a plane to take off' do
-
-  #     end 
-
-
-  #     xit 'does not allow a plane to land' do
-
-  #     end 
-  #   end
-  # end
+      it 'traffic controller does not allow plane to land' do
+        subject.capacity.times { subject.landing(plane) }
+        expect { subject.landing(plane) }.to raise_error "Keep flying. The airport is full!"
+      end
+    end
+  end
 end
