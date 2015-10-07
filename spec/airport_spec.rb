@@ -39,14 +39,31 @@ describe Airport do
   end
 
   describe 'Airport Traffic controller' do
-    context 'when airport is full' do
+    context 'airport is full' do
       before(:each) do
         allow(plane).to receive('land')
       end
 
       it 'traffic controller does not allow plane to land' do
         subject.capacity.times { subject.landing(plane) }
-        expect { subject.landing(plane) }.to raise_error "Keep flying. The airport is full!"
+        expect { subject.landing(plane) }.to raise_error "Keep flying!"
+      end
+    end
+  end
+
+  describe 'Weather is sunny and stormy' do
+    context 'weather is to stormy' do
+      before(:each) do
+        allow(subject).to receive(:status).and_return(:landed?)
+        allow(subject).to receive(:weather).and_return(:stormy)
+      end
+
+      it 'Airport does not allow plane to take off' do
+        expect { plane.take_off(subject) }.to raise_error "You are not allowed to take off!"
+      end
+
+      xit 'Airport does not allow plane to land' do
+        expect { plane.land(subject) }.to raise_error "You are not allowed to land!"
       end
     end
   end

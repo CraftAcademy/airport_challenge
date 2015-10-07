@@ -12,9 +12,13 @@ class Airport
     self.capacity = MAX_CAPACITY
   end
 
+  def weather
+    rand(1..10) <= 7 ? 'sunny' : 'stormy'
+  end
+
   def landing(plane)
     if airport_full?
-      raise "Keep flying. The airport is full!"
+      fail "Keep flying!"
     else
       plane_landed(plane)
     end
@@ -33,8 +37,20 @@ class Airport
 
   def plane_landed(plane)
     plane.land
-    @stationed_planes << plane
+    self.stationed_planes << plane
     plane
   end
-
 end
+
+
+# def land(airport)
+#   if self.status = "landed"
+#     fail "You are not allowed to land!"
+#   end
+# end
+
+# def take_off(airport)
+#   if self.status = "flying"
+#     fail "You are not allowed to take off!"
+#   end
+# end
