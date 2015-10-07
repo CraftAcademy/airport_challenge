@@ -18,6 +18,7 @@ describe Plane do
     expect(plane.plane_status).to eq('flying')
   end
 
-  it 'is landed after landing'
-  expect(:plane).to eq ('landing')
+  it 'is landed after landing'do
+    expect(:plane).to eq ('landing')
+  end
 end

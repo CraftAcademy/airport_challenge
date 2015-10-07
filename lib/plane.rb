@@ -3,6 +3,7 @@ class Plane
 
   def initialize
     @flying = true
+    @air = true
   end
 
   def flying?
@@ -21,7 +22,7 @@ class Plane
     end
 
     def air
-      air = 'In the air flying'
+      @air = 'In the air flying'
     end
   end
 end
