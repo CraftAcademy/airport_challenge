@@ -1,6 +1,6 @@
 require 'airport'
 require 'plane'
-
+require 'byebug'
 
 describe Airport do
   subject { Airport.new }
@@ -53,16 +53,14 @@ describe Airport do
 
   describe 'Weather is sunny and stormy' do
     context 'weather is to stormy' do
-      before(:each) do
-        allow(subject).to receive(:status).and_return(:landed?)
-        allow(subject).to receive(:weather).and_return(:stormy)
-      end
 
       it 'Airport does not allow plane to take off' do
+        allow(subject).to receive(:weather).and_return(:stormy)
         expect { plane.take_off(subject) }.to raise_error "You are not allowed to take off!"
       end
 
-      xit 'Airport does not allow plane to land' do
+      it 'Airport does not allow plane to land' do
+        allow(subject).to receive(:weather).and_return(:stormy)
         expect { plane.land(subject) }.to raise_error "You are not allowed to land!"
       end
     end

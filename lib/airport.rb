@@ -12,9 +12,14 @@ class Airport
     self.capacity = MAX_CAPACITY
   end
 
-  def weather
+  def weather?
     rand(1..10) <= 7 ? 'sunny' : 'stormy'
   end
+
+  def land?
+    weather? == :sunny && !self.airport_full?
+  end
+  #alias_method :land?, :take_off?
 
   def landing(plane)
     if airport_full?
@@ -41,16 +46,3 @@ class Airport
     plane
   end
 end
-
-
-# def land(airport)
-#   if self.status = "landed"
-#     fail "You are not allowed to land!"
-#   end
-# end
-
-# def take_off(airport)
-#   if self.status = "flying"
-#     fail "You are not allowed to take off!"
-#   end
-# end
